@@ -20,13 +20,16 @@ public class BusinessManager {
 	public User findUser(String userId) throws Exception {
 		log.info("BusinessManager::findUser started");
 		
-		User user = new User();
-		user.setId("54321");
-		user.setName("vincent");
-		return user;
+		//User user = new User();
+		//user.setId("54321");
+		//user.setName("vincent");
+		//return user;
+		
+		return DataManager.getInstance().findUserById(userId);
 	}
 
 	public List<User> findUsers() throws Exception {
+		/*
 		List<User> users = new ArrayList<User>();
 		User user1 = new User();
 		user1.setId("54321");
@@ -37,7 +40,10 @@ public class BusinessManager {
 		user2.setId("78965");
 		user2.setName("brandon");
 		users.add(user2);
-		return users;
+		return users;*/
+		
+		return DataManager.getInstance().findAllUsers();
+		
 	}
 
 	public User addUser(User user) {
@@ -47,15 +53,20 @@ public class BusinessManager {
 		return newUser;
 	}
 
-	public User updateUserAttribute(String userId, String attribute, String name) {
+	public User updateUserAttribute(String userId, String attribute, String value) {
+		/*
 		User user = new User();
 		user.setId(userId);
 		if (attribute.equals("name"))
 			user.setName(name);
 		return user;
+		*/
+
+		return DataManager.getInstance().updateUserAttribute(userId, attribute, value);
 	}
 
 	public void deleteUser(String userId) {
+		DataManager.getInstance().deleteUser(userId);		
 		return;
 	}
 }
